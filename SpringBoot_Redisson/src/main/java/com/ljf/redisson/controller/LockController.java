@@ -45,6 +45,7 @@ public class LockController {
         lock.lock(); //阻塞式等待 默认加的锁时30s时间
         // 1 锁的自动续期,如果业务执行时间过长,锁的时间会自动续期30s,不用担心业务执行时间过长,导致锁过期
         // 2 加锁的业务只要运行完成,就不会给当前锁续期
+        // 如果未指定锁的超时时间,则默认使用30s,而且只要占锁成功,会自动启动一个定时任务来给锁超时时间来续期(1/3时间后就再次续期)
         try {
             System.out.println("加锁成功,执行业务代码....."+Thread.currentThread().getName());
             Thread.sleep(30000);
@@ -63,6 +64,10 @@ public class LockController {
      * 可重入锁
      * 指定锁的过期时间
      *
+     * 指定锁的过期时间后,锁将不再自动续期
+     * 为什么会出现这种情况:
+     *
+     *
      * @return
      */
     @GetMapping("/reentrantLock2")
@@ -73,8 +78,7 @@ public class LockController {
         // 加锁
         //阻塞式等待 指定锁的有效时间是10s
         lock.lock(10, TimeUnit.SECONDS);
-        // 1 锁的自动续期,如果业务执行时间过长,锁的时间会自动续期30s,不用担心业务执行时间过长,导致锁过期
-        // 2 加锁的业务只要运行完成,就不会给当前锁续期
+        // 如果指定的锁的超时时间,则默认使用设置的时间来执行脚本占锁
         try {
             System.out.println("加锁成功,执行业务代码....."+Thread.currentThread().getName());
             Thread.sleep(30000);
