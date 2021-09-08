@@ -1,9 +1,6 @@
 package com.ljf.redisson.controller;
 
-import org.redisson.api.RBucket;
-import org.redisson.api.RLock;
-import org.redisson.api.RReadWriteLock;
-import org.redisson.api.RedissonClient;
+import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -174,6 +171,66 @@ public class LockController {
         }
         return name;
     }
+
+
+    /**
+     * 信号量(Semaphore)
+     *
+     * 车库停车 假设三个车位,来一辆车占用一个车位,走一辆车释放一个车位
+     *
+     * 功能演示执行:
+     * parkingSpace 停车位
+     * 缓存中设定parkingSpace=3,三个停车位
+     * 直接执行park(停车),占了一个车位 ,parkingSpace-1 = 2
+     * 再次执行等于1
+     * 再次执行等于0
+     * 如果还要再次执行,则进入阻塞状态
+     *
+     * 此时执行go(将车开走),则阻塞状态下的线程可执行
+     *
+     * 再次执行parkingSpace+1
+     *
+     *
+     * 信号量 :可用于分布式限流
+     *
+     */
+    /**
+     * 停车
+     * @return
+     */
+    @GetMapping("/park")
+    public String park() throws InterruptedException {
+
+        RSemaphore park = redisson.getSemaphore("parkingSpace");
+        boolean b = park.tryAcquire();
+        if (b){
+            // return 执行业务
+        }else{
+            // return 流量过大,限流,不可使用
+        }
+        //park.acquire(); // 获取一个信号,获取一个值,占一个车位
+
+        return "OK";
+    }
+
+
+    /**
+     * 将车开走
+     * @return
+     */
+    @GetMapping("/go")
+    public String go() {
+        RSemaphore park = redisson.getSemaphore("parkingSpace");
+        park.release(); // 释放一个信号,释放一个值,将车开走
+        return "OK";
+    }
+
+
+
+
+
+
+
 
 
 }
