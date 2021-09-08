@@ -3,6 +3,7 @@ package com.ljf.redisson.controller;
 import org.redisson.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -224,6 +225,47 @@ public class LockController {
         park.release(); // 释放一个信号,释放一个值,将车开走
         return "OK";
     }
+
+
+    /**
+     * 闭锁: 只有当设定条件都执行完,才关闭闭锁
+     *
+     * 业务场景:
+     *
+     * 举例: 放假 锁门
+     * 1班没人, 2班没人,....直到5个班所有人都走完,锁门
+     */
+
+
+    /**
+     * 锁门(条件是五个班的人都走了)
+     * @return
+     */
+    @GetMapping("/lockDoor")
+    public String lockDoor() throws InterruptedException {
+
+        RCountDownLatch lockDoor = redisson.getCountDownLatch("lockDoor");
+        // 设置班级数量
+        lockDoor.trySetCount(5);
+        // 等待闭锁完成
+        lockDoor.await();
+
+        return "所有班级都走完了,可以锁门了";
+
+
+    }
+
+    /**
+     * 班级走人
+     * @return
+     */
+    @GetMapping("/gogogo/{id}")
+    public String gogogo(@PathVariable("id") Long id) {
+        RCountDownLatch lockDoor = redisson.getCountDownLatch("lockDoor");
+        lockDoor.countDown(); // 计数减一(走一个班级)
+        return id+"班的人已经走了";
+    }
+
 
 
 
