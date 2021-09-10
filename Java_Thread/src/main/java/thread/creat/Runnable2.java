@@ -2,11 +2,10 @@ package thread.creat;
 
 /**
  * @Author: ljf
- * @Create: 2021/9/10 10:46
+ * @Create: 2021/9/10 10:49
  * @Description:
  **/
-public class ThreadCreat extends Thread{
-
+public class Runnable2 implements Runnable{
     @Override
     public void run() {
         for (int i = 0; i < 100; i++) {
