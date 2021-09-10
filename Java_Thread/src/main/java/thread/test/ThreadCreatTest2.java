@@ -1,7 +1,7 @@
 package thread.test;
 
-import thread.creat.ThreadCreat;
-import thread.creat.ThreadRunnable;
+
+import thread.creat.Runnable2;
 
 /**
  * @Author: ljf
@@ -14,7 +14,7 @@ public class ThreadCreatTest2 {
     public static void main(String[] args) {
         System.out.println("开始执行方法:");
 
-        ThreadRunnable threadRunnable = new ThreadRunnable();
+        Runnable2 threadRunnable = new Runnable2();
 
         new Thread(threadRunnable).start();
 

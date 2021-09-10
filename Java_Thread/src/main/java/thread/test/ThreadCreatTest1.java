@@ -1,6 +1,6 @@
 package thread.test;
 
-import thread.creat.ThreadCreat;
+import thread.creat.Thread1;
 
 /**
  * @Author: ljf
@@ -14,7 +14,7 @@ public class ThreadCreatTest1 {
 
         System.out.println("开始执行方法:");
 
-        ThreadCreat threadCreat = new ThreadCreat();
+        Thread1 threadCreat = new Thread1();
         threadCreat.start();
 
         for (int i = 0; i < 100; i++) {
