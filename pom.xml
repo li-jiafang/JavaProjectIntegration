@@ -18,6 +18,7 @@
     <modules>
         <module>SpringBoot_Redisson</module>
         <module>Java_Proxy</module>
+        <module>Java_Thread</module>
     </modules>
 
 
