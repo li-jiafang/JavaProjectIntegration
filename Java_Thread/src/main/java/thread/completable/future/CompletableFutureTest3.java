@@ -1,4 +1,4 @@
-package thread.test;
+package thread.completable.future;
 
 import java.util.concurrent.*;
 
