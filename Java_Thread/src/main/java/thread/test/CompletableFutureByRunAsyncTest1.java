@@ -10,7 +10,7 @@ import java.util.concurrent.*;
  * 异步编排
  * CompletableFuture.runAsync(Runnable,Executor) 方法执行,没有返回结果
  **/
-public class CompletableFutureTest1 {
+public class CompletableFutureByRunAsyncTest1 {
 
 
     public static void main(String[] args) {

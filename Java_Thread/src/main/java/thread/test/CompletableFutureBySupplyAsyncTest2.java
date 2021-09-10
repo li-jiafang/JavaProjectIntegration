@@ -9,7 +9,7 @@ import java.util.concurrent.*;
  *  CompletableFuture<Integer> integerCompletableFuture = CompletableFuture.supplyAsync() 执行
  *
  **/
-public class CompletableFutureTest2 {
+public class CompletableFutureBySupplyAsyncTest2 {
 
     public static void main(String[] args) throws ExecutionException, InterruptedException {
         ThreadPoolExecutor executor = new ThreadPoolExecutor(5,
