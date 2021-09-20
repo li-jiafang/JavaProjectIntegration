@@ -1,7 +1,6 @@
 package com.ljf.aop.common.aoplog;
 
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 
 /**
  * @Author: ljf

@@ -1,25 +1,10 @@
 package com.ljf.aop.common.aoplog.impl;
 
-import cn.hutool.core.util.ArrayUtil;
-import com.ljf.aop.common.aoplog.AopLog;
 import com.ljf.aop.common.aoplog.AopLogAbstract;
 import lombok.extern.slf4j.Slf4j;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
-import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.*;
-import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import java.net.InetAddress;
-import java.net.UnknownHostException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Objects;
 
 /**
  * @Author: ljf

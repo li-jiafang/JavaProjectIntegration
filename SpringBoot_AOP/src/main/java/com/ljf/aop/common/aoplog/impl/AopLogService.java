@@ -2,7 +2,6 @@ package com.ljf.aop.common.aoplog.impl;
 
 import com.ljf.aop.common.aoplog.AopLog;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.stereotype.Component;
 
