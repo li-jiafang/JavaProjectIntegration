@@ -1,4 +1,4 @@
-package statics.dynamic;
+package dynamic;
 
 /**
  * @Author: ljf
