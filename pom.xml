@@ -22,6 +22,7 @@
         <module>SpringBoot_SourceCode</module>
         <module>SpringBoot_Dubbo_UserProvider</module>
         <module>SpringBoot_Dubbo_OrderConsumer</module>
+        <module>Java_DesignPattern</module>
     </modules>
 
 
