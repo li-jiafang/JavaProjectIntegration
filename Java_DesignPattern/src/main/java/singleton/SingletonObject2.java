@@ -9,7 +9,7 @@ package singleton;
  * 是new出两个实例，无法保证单例的唯一性，所以有下面第三种方法。
  **/
 public class SingletonObject2 {
-    private static final SingletonObject2 instance = null;
+    private static SingletonObject2 instance = null;
 
     public SingletonObject2(){
 
