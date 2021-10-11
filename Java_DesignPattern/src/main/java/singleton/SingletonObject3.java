@@ -10,7 +10,7 @@ package singleton;
  **/
 public class SingletonObject3 {
 
-    public static SingletonObject3 instance = null;
+    private static SingletonObject3 instance = null;
 
     public SingletonObject3() {
     }
